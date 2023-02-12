@@ -1,1 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GOK: Season 3</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+            *::after, *::before, *, html {
+                box-sizing: border-box;
+                font-family: "Lexend", sans-serif;
+                user-select: none;
+                -ms-user-select: none;
+                -moz-user-select: none;
+                -o-user-select: none;
+                -webkit-user-select: none;
+                scroll-behavior: smooth;
+            }
+
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                background: #211a1a;
+                color: #fcfcfc;
+                max-width: 1000px;
+                margin: auto;
+            }
+
+            .flex {
+                display: flex;
+            }
+
+            .center {
+                align-items: center;
+            }
+
+            .center-a {
+                justify-content: center;
+                align-items: center;
+            }
+
+            .center-b {
+                justify-content: center;
+            }
+
+            .coloumn {
+                flex-direction: column;
+            }
+
+            .dialog {
+                padding: 54px;
+                border-radius: 24px;
+                box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+                background: #362929;
+                margin: 13px;
+            }
+
+
+            .box {
+                background: #362929;
+                border-radius: 24px;
+                box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+                height: 100%;
+                padding: 10px;
+            }
+
+            .sandwich {
+                background: #211a1a;
+                padding: 24px;
+                color: #ffb3b5;
+                border-radius: 24px;
+                width: 100%;
+                height: 100%;
+            }
+
+            .sandwich-none {
+                background: transparent;
+                padding: 24px;
+                border-radius: 24px;
+                width: 100%;
+            }
+
+            .dialog > .text {
+                line-height: 1.5;
+                z-index: 2;
+                text-align: center;
+            }
+
+            a {
+                color: currentColor;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .link-button,
+            header.chip,
+            header.chip-bg {
+                padding: 9px 17px;
+                background: #ffb3b5;
+                border-radius: 100px;
+                color: #000;
+                font-weight: 500;
+            }
+
+            .p1 {
+                margin: 50px 0 0 0;
+            }
+
+            .title {
+                font-size: 5rem;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .bigtitle {
+                font-size: 1.3em;
+                font-weight: 500;
+            }
+
+            .lines {
+                height: 1px;
+                display: inline-block;
+                width: 100%;
+                background: #333;
+                border: 1px solid #333;
+            }
+
+
+            .header-n-sec {
+                padding: 13px;
+            }
+
+            header.chip {
+                color: #fcfcfc;
+                background: none !important;
+            }
+
+            svg.circle {
+                clip-path:circle();
+            }
+
+            .grid {
+                padding: 10px;
+                display: grid;
+                gap: 2rem;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                justify-content: center;
+                align-items: center;
+            }
+
+            .profilepic {
+                max-width: 64px;
+                max-height: 64px;
+                margin: 15px;
+                clip-path: circle();
+            }
+
+            .profile,
+            .outer {
+                width: 100%;
+            }
+
+            .outlined {
+                padding: 12px;
+                max-width: 128px !important;
+                max-height: 128px !important;
+                width: 64px;
+                height: 64px;
+                border-radius: 24px;
+                clip-path: none !important;
+                background: #211a1a;
+                color: #ffb3b5;
+            }
+
+            .outer {
+                justify-content: space-between !important;
+                margin: 10px 0;
+            }
+
+            .icon {
+                margin-right: 5px;
+            }
+
+            .plus {
+                margin: 10px 0;
+            }
+
+            .animated-link {
+                width: max-content;
+            }
+
+            .animated-link:after {
+                content: '';
+                display: block;
+                height: 2px;
+                width: 0px;
+                background: #808080;
+                transition: width .5s ease, background-color .5s ease;
+            }
+
+            .animated-link:hover:after {
+                width: 100%;
+            }
+
+            .disabled {
+                pointer-events: none !important;
+                filter: brightness(10%) !important;
+                cursor: no-drop !important;
+            }
+
+            .icon-overlay {
+                background: #21211a;
+                padding: 10px;
+                border-radius: 12px;
+            }
+
+            .out-bar {
+                width: 100%;
+                z-index: 10;
+                position: sticky;
+                top: 0;
+                border-bottom-left-radius: 24px;
+                border-bottom-right-radius: 24px;
+            }
+
+            .inner-bar {
+                background: #362929;
+                padding: 9px 15px;
+                width: 100%;
+                border-bottom-left-radius: 24px;
+                border-bottom-right-radius: 24px;
+                box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+            }
+
+            
+            table {
+                border-collapse: separate;
+                border-spacing: 0;
+                font-size: calc(1 * 16px);
+                width: 100%;
+                height: auto;
+                padding: 12px;
+                margin: 27px 0px;
+            }
+
+            thead {
+                border-collapse: separate;
+                border-spacing: 0;
+                box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+                font-size: inherit;
+                border-radius: 100px;
+            }
+
+            th.jsx-2538785967:nth-child(1) {
+                border-bottom: 1px solid transparent;
+                border-left: 1px solid transparent;
+                border-top: 1px solid transparent;
+                border-top-left-radius: 100px;
+                border-bottom-left-radius: 100px;
+            }
+            
+            th.jsx-2538785967:last-child {
+                border-bottom: 1px solid transparent;
+                border-left: 1px solid transparent;
+                border-top: 1px solid transparent;
+                border-top-right-radius: 100px;
+                border-bottom-right-radius: 100px;
+            }
+
+            th.jsx-2538785967 {
+                padding: 0 0.5em;
+                font-size: calc(0.75 * 16px);
+                font-weight: normal;
+                text-align: left;
+                letter-spacing: 0;
+                vertical-align: middle;
+                min-height: calc(2.5 * 16px);
+                background: #362929;
+                color: #ffb3b5;
+                border-bottom: 1px solid transparent;
+                border-top: 1px solid transparent;
+                border-radius: 0;
+            }
+
+            .thead-box.jsx-2538785967 {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-align-items: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-align: center;
+                min-height: calc(2.5 * 16px);
+                padding: 10px;
+            }
+
+            tr.jsx-4096709162 td {
+                padding: 25px;
+                border-bottom: 1px dotted #333;
+                color: #ffb3b5;
+                font-size: calc(0.875 * 16px);
+                text-align: left;
+            }
+
+            tr.jsx-4096709162 .cell {
+                min-height: calc(3.125 * 16px);
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                flex-flow: row wrap;
+                margin: 6px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="out-bar flex">
+            <div class="inner-bar flex center">
+                <div class="sandwich-none flex center-a" style="padding: 0px;">
+                    <div class="profile flex center">
+                        <svg style="width: 58px;height:52px;" class="profilepic outlined" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        <p class="subtitle"><b>Aroma File Manager</b></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="one" id="members">
+            <div class="structures" id="gok">
+                <table class="jsx-1228834629 ">
+                    <colgroup></colgroup>
+                    <thead class="jsx-2538785967">
+                        <tr class="jsx-2538785967">
+                            <th class="jsx-2538785967 ">
+                                <div class="jsx-2538785967 thead-box">Type</div>
+                            </th>
+                            <th class="jsx-2538785967 ">
+                                <div class="jsx-2538785967 thead-box">Name</div>
+                            </th>
+                            <th class="jsx-2538785967 ">
+                                <div class="jsx-2538785967 thead-box">Change directory</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="jsx-4096709162">
+                        <tr class="jsx-4096709162 hover">
+                            <td class="">
+                                <div class="cell flex center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                                </div>
+                            </td>
+                            <td class="">
+                                <div class="cell">Picture</div>
+                            </td>
+                            <td class="">
+                                <a href="/Picture" class="cell link-button flex center-a">Open dir.</a>
+                            </td>
+                        </tr>
+                        <tr class="jsx-4096709162 hover">
+                            <td class="">
+                                <div class="cell flex center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                                </div>
+                            </td>
+                            <td class="">
+                                <div class="cell">GOKSC</div>
+                            </td>
+                            <td class="">
+                                <a href="/GOKSC" class="cell link-button flex center-a">Open dir.</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <footer class="four flex coloumn" style="padding: 24px;" id="#about">
+            <div class="squiggle plus"><svg _ngcontent-ghu-c39="" aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern _ngcontent-ghu-c39="" id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g _ngcontent-ghu-c39="" clip-path="url(#clip0_2426_11367)"><path _ngcontent-ghu-c39="" d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0" stroke="#333" stroke-linecap="square"></path></g></pattern><rect _ngcontent-ghu-c39="" width="100%" height="100%" fill="url(#a)"></rect></svg></div>
+            <svg style="margin: 15px 15px 15px 0px;" class="circle" width="64" height="64" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1080" height="1080" fill="#000"/>
+                <path d="M365 278L540 418.55L715 278V643.24L540 801L365 643.24V278Z" fill="white"/>
+                <path d="M540 228L551.226 262.549H587.553L558.164 283.902L569.389 318.451L540 297.098L510.611 318.451L521.836 283.902L492.447 262.549H528.774L540 228Z" fill="white"/>
+            </svg>
+            <p>Created from scrap (html, css) by <b>@Faris</b></p>
+            <p>No template, inspired by <b>Google Material You Design language.</b></p>
+            <div class="plus"></div>
+            <div class="plus"></div>
+            <div class="grid allmem flex center-a" style="padding: 0;">
+                <div class="sandwich-none flex coloumn" style="padding: 0;">
+                    <b>Thanks to</b>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="mailto:etofamuris@outlook.co.id">
+                        W3School
+                    </a>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="https://instagram.com/farisfamuris">
+                        Vercel
+                    </a>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="https://twitter.com/gwfrosty_ngab">
+                        Material You
+                    </a>
+                </div>
+                <div class="sandwich-none flex coloumn" style="padding: 0;">
+                    <b>Creator</b>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="mailto:etofamuris@outlook.co.id">
+                        Faris's Instagram
+                    </a>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="https://instagram.com/farisfamuris">
+                        Faris's Twitter
+                    </a>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="https://twitter.com/gwfrosty_ngab">
+                        Faris's GitHub
+                    </a>
+                </div>
+                <div class="sandwich-none flex coloumn" style="padding: 0;">
+                    <b>GOK's</b>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="mailto:etofamuris@outlook.co.id">
+                        Manage this Web
+                    </a>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="https://instagram.com/farisfamuris">
+                        GOK's Instagram
+                    </a>
+                    <a class="plus animated-link" style="color: #808080;font-size: 12px;" href="https://twitter.com/gwfrosty_ngab">
+                        GOK's Archive
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
